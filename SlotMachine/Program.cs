@@ -48,7 +48,12 @@ namespace SlotMachine
                 }
 
                 // payout
-                Console.WriteLine("You won {0} pennies!", myMachine.GetPayout());
+                if (myMachine.GetPayout() > 0)
+                {
+                    
+                    Console.WriteLine("You won {0} pennies!", myMachine.GetPayout());
+                }
+                Console.WriteLine("Your win percentage {0:P2}", myMachine.GetWinPrecentage());
             }
 
         }
