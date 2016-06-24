@@ -14,7 +14,7 @@ namespace SlotMachine
         public int IconsPerSlot { get; set; }
         public int MinimumBet { get; set; }
         public int MaximumBet { get; set; }
-        private int GameCounter = 0, WinCounter = 0;
+        public double WinPercentage = 0;
 
         private int _currentBet;
         public int CurrentBet
@@ -63,9 +63,6 @@ namespace SlotMachine
             {
                 icons[i] = random.Next(1, IconsPerSlot + 1);
             }
-
-            GameCounter++;
-            // TODO
         }
 
         /// <summary>
@@ -98,11 +95,10 @@ namespace SlotMachine
             return 0;
         }
 
-        public double GetWinPrecentage()
+        public double GetWinPrecentage(double WinCounter, double GameCounter)
         {
-            double WinPercentage = 0;
-
-                return WinPercentage = (double)(WinCounter / GameCounter);
+            WinPercentage = WinCounter / GameCounter;
+            return WinPercentage;
         }
 
 

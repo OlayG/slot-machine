@@ -19,7 +19,8 @@ namespace SlotMachine
          */
         static void Main(string[] args)
         {
-            SlotMachine myMachine = new SlotMachine(); // 3 slots, 5 icons per slot
+             double GameCounter = 0, WinCounter = 0;
+        SlotMachine myMachine = new SlotMachine(); // 3 slots, 5 icons per slot
 
             Console.WriteLine("Welcome to slots!");
 
@@ -27,6 +28,7 @@ namespace SlotMachine
 
             while (true)
             {
+                GameCounter++;
                 // place a bet
                 Console.WriteLine("Type in how many pennies to bet");
 
@@ -50,10 +52,22 @@ namespace SlotMachine
                 // payout
                 if (myMachine.GetPayout() > 0)
                 {
-                    
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You won {0} pennies!", myMachine.GetPayout());
+                    Console.ResetColor();
+                    WinCounter++;
+
+                } else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You won {0} pennies!", myMachine.GetPayout());
+                    Console.ResetColor();
                 }
-                Console.WriteLine("Your win percentage {0:P2}", myMachine.GetWinPrecentage());
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Your win percentage: {0}/{1} = {2:P2}", WinCounter, GameCounter, myMachine.GetWinPrecentage(WinCounter, GameCounter));
+                Console.ResetColor();
+
             }
 
         }
